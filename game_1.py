@@ -12,6 +12,7 @@ choice_list=['剪刀','石头','布']
 win_list=['剪刀布','石头剪刀','布石头']
 player=choice_list[int(raw_input(readme))]
 computer=random.choice(choice_list)
+print '你选择了{you}，电脑选择了{computer}'.format(you=player,computer=computer)
 
 if player is computer:
     print 'no winner...'
