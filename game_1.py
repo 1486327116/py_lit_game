@@ -2,12 +2,12 @@
 #coding=utf-8
 import random
 
-readme='''这是一个简单人机剪刀，石头，布的对战
+readme='''
+这是一个简单人机剪刀，石头，布的对战
 请输入你的选择：
-1 剪刀
-2 石头
-3 布
-
+0 剪刀
+1 石头
+2 布
 '''
 
 choice_list = ['剪刀','石头','布']
@@ -17,7 +17,7 @@ win_times = 0
 while times < 3:
     player = choice_list[int(raw_input(readme))]
     computer = random.choice(choice_list)
-    print '你选择了{you}，电脑选择了{computer}'.format(you=player,computer=computer)
+    print '\n你选择了{you}，电脑选择了{computer}'.format(you=player,computer=computer)
 
     if player is computer:
         print 'no winner...'
