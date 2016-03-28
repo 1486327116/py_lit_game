@@ -13,7 +13,7 @@ def add_money():
     with open('wallet','w') as f:
         cPickle.dump(money,f)
     with open('record','a') as f:
-        cPickle.dump('%-10s%-10s%-10s%-10s%-20s' %(date, 'N/A', mount, money, content),f)
+        f.write('%-10s%-10s%-10s%-10s%-20s\n' %(date, 'N/A', mount, money, content))
 
 
 
@@ -26,11 +26,12 @@ def spend_money():
     with open('wallet', 'w') as f:
         cPickle.dump(money, f)
     with open('record', 'a') as f:
-        cPickle.dump('%-10s%-10s%-10s%-10s%-20s' %(date, mount, 'N/A', money, content),f)
+        f.write('%-10s%-10s%-10s%-10s%-20s\n' %(date, 'N/A', mount, money, content))
+
 def select_money():
     with open('record') as f:
         for line in f:
-            print line
+            print line,
     with open('wallet') as f:
         print '\033[32mNow money is {}\033[0m'.format(cPickle.load(f))
 
@@ -42,7 +43,7 @@ if __name__ == '__main__':
             cPickle.dump(1000, f)
     if not os.path.isfile('record'):
         with open('record', 'w') as f:
-            cPickle.dump('%-10s%-10s%-10s%-10s%-20s' %('date', 'spend', 'add', 'money', 'describe'),f)
+            f.write('%-10s%-10s%-10s%-10s%-20s\n' %('date', 'spend', 'add', 'money', 'describe'))
     cmds = {'0':add_money, '1':spend_money,'2':select_money}
     while True:
         readme = '''(0)存钱
